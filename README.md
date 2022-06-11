@@ -1,5 +1,10 @@
 # README
 
+## 本アプリケーションの開発環境
+
+ruby 3.1.2  
+rails 7.0.3
+
 ## Rubyの開発環境構築（Windows）
 
  ①Rubyのインストール  

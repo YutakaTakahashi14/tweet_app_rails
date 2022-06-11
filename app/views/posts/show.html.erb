@@ -1,0 +1,30 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <div class="post-user-name">
+        <img src="<%= "/user_images/#{@user.image_name}" %>">
+        <%= link_to(@user.name,"/users/#{@user.id}") %>
+      </div>
+      <p>
+        <%= @post.content %>
+      </p>
+      <div class="post-time">
+        <%= @post.created_at %>
+      </div>
+      <% if Like.find_by(user_id:@current_user.id,post_id:@post.id) %>
+        <%= link_to("いいね！済み","/likes/#{@post.id}/destroy")%>
+      <% else %>
+        <%= link_to("いいね！","/likes/#{@post.id}/create")%>
+      <% end %>
+      <%# いいね！の数を表示 %>
+      <%= @likes_count %>
+      <% if @post.user_id == @current_user.id %>
+        <div class="post-menus">
+          <%# turboの書き方 %>
+          <%= link_to "編集", "/posts/#{@post.id}/edit" %>
+          <%= link_to "削除", "/posts/#{@post.id}/destroy" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
